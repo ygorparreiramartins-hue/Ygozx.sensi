@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ygorxz Sensi | Free Fire</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Rajdhani',sans-serif;
+  background:#03101a;
+  color:#e0f7fa;
+  min-height:100vh;
+}
+
+body::after{
+  content:'';
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 40% at 10% 10%, rgba(0,180,200,0.07) 0%,transparent 70%),
+    radial-gradient(ellipse 60% 50% at 90% 90%, rgba(0,100,130,0.09) 0%,transparent 70%);
+}
+
+header{
+  position:sticky;top:0;z-index:200;
+  height:58px;
+  background:rgba(3,16,26,0.97);
+  border-bottom:1px solid rgba(0,229,255,0.13);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;
+  position:relative;z-index:200;
+}
+.logo{
+  font-family:'Orbitron',sans-serif;
+  font-size:1.05rem;font-weight:900;letter-spacing:4px;
+  color:#00e5ff;text-shadow:0 0 18px rgba(0,229,255,0.45);
+}
+.logo b{color:rgba(0,229,255,0.4);}
+.hright{display:flex;align-items:center;gap:8px;font-size:.65rem;letter-spacing:2px;color:rgba(0,229,255,0.45);}
+.live{width:6px;height:6px;background:#00ff88;border-radius:50%;box-shadow:0 0 8px #00ff88;animation:ldot 1.4s ease-in-out infinite;}
+@keyframes ldot{0%,100%{transform:scale(1);}50%{transform:scale(1.7);opacity:.5;}}
+
+.hero{
+  text-align:center;
+  padding:48px 24px 36px;
+  position:relative;z-index:1;
+}
+.htag{
+  display:inline-block;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;
+  color:#00e5ff;border:1px solid rgba(0,229,255,0.2);
+  padding:5px 14px;border-radius:2px;background:rgba(0,229,255,0.04);
+  margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(1.9rem,6vw,3.4rem);
+  font-weight:900;line-height:1.05;margin-bottom:10px;
+}
+.hero h1 span{
+  background:linear-gradient(120deg,#00e5ff 0%,#80deea 50%,#00bcd4 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 14px rgba(0,229,255,0.35));
+}
+.hero p{font-size:.95rem;color:rgba(200,240,255,0.45);max-width:420px;margin:0 auto 24px;line-height:1.6;}
+.hstats{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;}
+.hs{text-align:center;}
+.hs-n{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:700;color:#00e5ff;text-shadow:0 0 14px rgba(0,229,255,0.35);display:block;}
+.hs-l{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:rgba(0,229,255,0.35);}
+
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,229,255,0.12),transparent);max-width:1160px;margin:0 auto;}
+
+.layout{
+  position:relative;z-index:1;
+  display:grid;
+  grid-template-columns:270px 1fr;
+  max-width:1160px;margin:0 auto;
+  border-top:1px solid rgba(0,229,255,0.07);
+}
+
+.sidebar{
+  border-right:1px solid rgba(0,229,255,0.07);
+  padding:20px 14px;
+}
+.slabel{font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:rgba(0,229,255,0.3);margin-bottom:12px;display:block;}
+
+.search{position:relative;margin-bottom:10px;}
+.search input{
+  width:100%;padding:8px 12px 8px 34px;
+  background:rgba(0,229,255,0.03);
+  border:1px solid rgba(0,229,255,0.12);
+  border-radius:4px;
+  color:#e0f7fa;font-family:'Rajdhani',sans-serif;font-size:.82rem;
+  outline:none;transition:border .15s;
+}
+.search input:focus{border-color:rgba(0,229,255,0.35);}
+.search input::placeholder{color:rgba(0,229,255,0.2);}
+.sico{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:.85rem;pointer-events:none;}
+
+.brands{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
+.br{
+  font-size:.58rem;letter-spacing:1px;text-transform:uppercase;
+  padding:3px 9px;border-radius:2px;cursor:pointer;
+  background:transparent;border:1px solid rgba(0,229,255,0.12);
+  color:rgba(0,229,255,0.35);font-family:'Rajdhani',sans-serif;font-weight:600;
+  transition:all .15s;
+}
+.br:hover,.br.on{background:rgba(0,229,255,0.08);border-color:rgba(0,229,255,0.35);color:#00e5ff;}
+
+.dlist{display:flex;flex-direction:column;gap:5px;max-height:56vh;overflow-y:auto;padding-right:2px;}
+.dlist::-webkit-scrollbar{width:2px;}
+.dlist::-webkit-scrollbar-thumb{background:rgba(0,229,255,0.15);border-radius:2px;}
+
+.di{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 11px;border-radius:4px;cursor:pointer;
+  background:transparent;border:1px solid transparent;
+  transition:all .15s;
+}
+.di:hover{background:rgba(0,229,255,0.05);border-color:rgba(0,229,255,0.15);}
+.di.on{background:rgba(0,229,255,0.08);border-color:#00e5ff;box-shadow:0 0 12px rgba(0,229,255,0.12);}
+.di-ico{font-size:1.1rem;flex-shrink:0;}
+.di-info{flex:1;min-width:0;}
+.di-brand{font-size:.5rem;letter-spacing:2px;text-transform:uppercase;color:rgba(0,229,255,0.3);}
+.di-name{font-size:.8rem;font-weight:600;color:rgba(200,240,255,0.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.di.on .di-name{color:#00e5ff;}
+.di-tick{width:15px;height:15px;border-radius:50%;background:#00e5ff;display:none;align-items:center;justify-content:center;font-size:7px;color:#03101a;font-weight:900;flex-shrink:0;}
+.di.on .di-tick{display:flex;}
+
+.panel{padding:24px 28px;min-height:65vh;}
+
+.empty{
+  height:55vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;gap:12px;
+}
+.empty-ico{font-size:3rem;opacity:.2;}
+.empty p{font-size:.8rem;color:rgba(0,229,255,0.2);letter-spacing:1px;line-height:1.8;max-width:240px;}
+
+.ph{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px;}
+.ph-title{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;color:#00e5ff;text-shadow:0 0 14px rgba(0,229,255,0.3);}
+.ph-sub{font-size:.7rem;color:rgba(0,229,255,0.35);letter-spacing:1px;margin-top:2px;}
+.ph-badge{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border-radius:2px;background:rgba(0,255,136,0.07);color:#00ff88;border:1px solid rgba(0,255,136,0.18);}
+
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px;margin-bottom:14px;}
+.sc{
+  background:rgba(0,229,255,0.03);
+  border:1px solid rgba(0,229,255,0.09);
+  border-radius:5px;padding:13px 14px;
+  position:relative;overflow:hidden;
+  transition:border-color .2s;
+}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,rgba(0,229,255,0.35),transparent);}
+.sc:hover{border-color:rgba(0,229,255,0.2);}
+.sc-lbl{font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:rgba(0,229,255,0.35);display:block;margin-bottom:5px;}
+.sc-val{font-family:'Orbitron',sans-serif;font-size:1.9rem;font-weight:700;color:#00e5ff;text-shadow:0 0 14px rgba(0,229,255,0.3);display:block;line-height:1;margin-bottom:7px;}
+.sbar-bg{height:2.5px;background:rgba(0,229,255,0.07);border-radius:3px;overflow:hidden;}
+.sbar{height:100%;background:linear-gradient(90deg,#005f6b,#00e5ff);border-radius:3px;box-shadow:0 0 5px rgba(0,229,255,0.4);width:0;transition:width 1s cubic-bezier(.4,0,.2,1);}
+
+.tipbox{
+  display:flex;align-items:flex-start;gap:8px;
+  background:rgba(0,229,255,0.03);border:1px solid rgba(0,229,255,0.09);
+  border-radius:4px;padding:11px 14px;
+  font-size:.8rem;color:rgba(200,240,255,0.45);line-height:1.6;
+  margin-bottom:14px;
+}
+.tipbox span:first-child{flex-shrink:0;}
+
+.cbtn{
+  width:100%;padding:12px;border-radius:4px;border:none;cursor:pointer;
+  font-family:'Orbitron',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:#fff;
+  background:linear-gradient(135deg,#00838f,#00bcd4);
+  box-shadow:0 0 20px rgba(0,229,255,0.2);
+  transition:all .2s;
+  margin-bottom:20px;
+  display:block;
+}
+.cbtn:hover{transform:translateY(-1px);box-shadow:0 0 30px rgba(0,229,255,0.35);}
+.cbtn:active{transform:scale(.98);}
+
+.mlabel{font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:rgba(0,229,255,0.3);display:block;margin-bottom:10px;padding-top:18px;border-top:1px solid rgba(0,229,255,0.06);}
+table.mt{width:100%;border-collapse:collapse;font-size:.78rem;}
+table.mt th{font-family:'Orbitron',sans-serif;font-size:.5rem;letter-spacing:2px;text-transform:uppercase;color:rgba(0,229,255,0.35);padding:7px 10px;text-align:left;border-bottom:1px solid rgba(0,229,255,0.07);background:rgba(0,229,255,0.02);}
+table.mt td{padding:9px 10px;border-bottom:1px solid rgba(0,229,255,0.04);color:rgba(200,240,255,0.65);vertical-align:middle;}
+table.mt tr:hover td{background:rgba(0,229,255,0.02);}
+.mtag{font-size:.52rem;letter-spacing:1px;padding:2px 7px;border-radius:2px;font-weight:700;text-transform:uppercase;}
+.mtag.r{background:rgba(255,215,0,.07);color:#ffd700;border:1px solid rgba(255,215,0,.18);}
+.mtag.c{background:rgba(0,255,136,.07);color:#00ff88;border:1px solid rgba(0,255,136,.18);}
+.mtag.b{background:rgba(255,100,100,.07);color:#ff8a80;border:1px solid rgba(255,100,100,.18);}
+
+.tips-wrap{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:28px 24px 48px;}
+.tips-title{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;color:#e0f7fa;text-align:center;margin-bottom:18px;}
+.tips-title span{background:linear-gradient(120deg,#00e5ff,#80deea);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
+.tc{background:rgba(0,229,255,0.02);border:1px solid rgba(0,229,255,0.07);border-radius:5px;padding:16px;transition:all .18s;}
+.tc:hover{background:rgba(0,229,255,0.05);border-color:rgba(0,229,255,0.18);transform:translateY(-2px);}
+.tc-i{font-size:1.3rem;margin-bottom:7px;display:block;}
+.tc-t{font-family:'Orbitron',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:1px;color:#00e5ff;margin-bottom:4px;}
+.tc-p{font-size:.75rem;line-height:1.6;color:rgba(200,240,255,0.4);}
+
+footer{position:relative;z-index:1;border-top:1px solid rgba(0,229,255,0.06);padding:18px 24px;text-align:center;}
+.fl{font-family:'Orbitron',sans-serif;font-size:.78rem;font-weight:900;color:rgba(0,229,255,0.25);letter-spacing:4px;margin-bottom:3px;}
+.fs{font-size:.65rem;color:rgba(200,240,255,0.12);letter-spacing:.5px;}
+
+.toast{
+  position:fixed;bottom:20px;right:20px;z-index:999;
+  background:rgba(0,20,30,0.98);border:1px solid rgba(0,229,255,0.25);
+  color:#00e5ff;font-family:'Rajdhani',sans-serif;font-size:.8rem;letter-spacing:1.5px;
+  padding:10px 18px;border-radius:4px;
+  opacity:0;transform:translateY(40px);
+  transition:all .25s ease;pointer-events:none;
+}
+.toast.on{opacity:1;transform:translateY(0);}
+.nores{font-size:.72rem;color:rgba(0,229,255,.2);padding:8px 4px;letter-spacing:1px;}
+
+@media(max-width:720px){
+  .layout{grid-template-columns:1fr;}
+  .sidebar{border-right:none;border-bottom:1px solid rgba(0,229,255,0.07);}
+  .panel{padding:20px 16px;}
+  .dlist{max-height:40vh;}
+}
+</style>
+</head>
+<body>
+
+<div style="position:relative;z-index:1;">
+
+<header>
+  <div class="logo">YGORXZ<b>SENSI</b></div>
+  <div class="hright"><span class="live"></span>FREE FIRE 2025</div>
+</header>
+
+<div class="hero">
+  <div class="htag">🔥 Sensi Real — Testada em Ranked</div>
+  <h1>MIRE COMO UM<br><span>PRO PLAYER</span></h1>
+  <p>Escolha seu celular e receba a sensibilidade exata. Valores reais de 100 a 200, testados em partidas.</p>
+  <div class="hstats">
+    <div class="hs"><span class="hs-n">18+</span><span class="hs-l">Celulares</span></div>
+    <div class="hs"><span class="hs-n">100–200</span><span class="hs-l">Faixa Sensi</span></div>
+    <div class="hs"><span class="hs-n">Free</span><span class="hs-l">Sempre</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="layout">
+  <div class="sidebar">
+    <span class="slabel">📱 Selecione seu celular</span>
+    <div class="search">
+      <span class="sico">🔍</span>
+      <input type="text" id="q" placeholder="Buscar modelo...">
+    </div>
+    <div class="brands" id="brands"></div>
+    <div class="dlist" id="dlist"></div>
+  </div>
+  <div class="panel" id="panel">
+    <div class="empty">
+      <span class="empty-ico">🎯</span>
+      <p>Selecione seu celular para ver a configuração completa de sensibilidade</p>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="tips-wrap">
+  <div class="tips-title">Dicas de <span>Pro Player</span></div>
+  <div class="tgrid" id="tgrid"></div>
+</div>
+
+<footer>
+  <div class="fl">YGORXZ SENSI</div>
+  <div class="fs">Configurações testadas em ranked • Grátis sempre • Free Fire 2025</div>
+</footer>
+
+</div>
+
+<div class="toast" id="toast">✓ Configuração copiada!</div>
+
+<script>
+var devs = [
+  {id:'ip15',  brand:'Apple',   ico:'🍎', name:'iPhone 15 / 15 Pro',
+   s:[142,138,125,112,104,165],
+   tip:'120Hz ProMotion. Sensi alta funciona perfeitamente. Desative gestos de borda antes de jogar.'},
+  {id:'ip14',  brand:'Apple',   ico:'🍎', name:'iPhone 14 / 14 Plus',
+   s:[135,132,120,108,100,158],
+   tip:'OLED 60Hz estável. Mira vermelha alta garante headshot consistente no médio alcance.'},
+  {id:'ip13',  brand:'Apple',   ico:'🍎', name:'iPhone 13 / 13 mini',
+   s:[130,128,116,105,100,152],
+   tip:'Toque muito responsivo. Ideal para 2 dedos com sensi média-alta.'},
+  {id:'s24u',  brand:'Samsung', ico:'🌌', name:'Galaxy S24 Ultra',
+   s:[148,144,130,116,108,170],
+   tip:'LTPO 120Hz + Snapdragon 8 Gen 3. Ative modo performance. Sensi alta sem travada.'},
+  {id:'s24',   brand:'Samsung', ico:'🌌', name:'Galaxy S24 / S24+',
+   s:[144,140,126,113,105,166],
+   tip:'Display top de linha. Sensi 144 no geral é o sweet spot para jogadores agressivos.'},
+  {id:'s23',   brand:'Samsung', ico:'🌌', name:'Galaxy S23 / S23 FE',
+   s:[138,135,122,110,102,160],
+   tip:'Exynos pode variar levemente. Teste no campo de treino antes do ranked.'},
+  {id:'a54',   brand:'Samsung', ico:'🌌', name:'Galaxy A54 / A34',
+   s:[125,122,112,102,100,148],
+   tip:'120Hz sólido. Mid-range confiável. Sensi 125 geral é o ponto perfeito.'},
+  {id:'a15',   brand:'Samsung', ico:'🌌', name:'Galaxy A15 / A05s',
+   s:[115,112,104,100,100,138],
+   tip:'90Hz. Não suba acima de 120 no geral ou a mira fica instável.'},
+  {id:'a16',   brand:'Samsung', ico:'🌌', name:'Galaxy A16 5G',
+   s:[118,115,106,100,100,140],
+   tip:'Dimensity 6300 + 90Hz. Boa resposta de toque. Sweet spot entre 115-125.'},
+  {id:'px6',   brand:'Xiaomi',  ico:'⚡', name:'POCO X6 Pro',
+   s:[152,148,133,118,110,172],
+   tip:'Snapdragon 8s Gen 3 + 120Hz. Um dos melhores custo-benefício. Sensi alta sem problema.'},
+  {id:'px5',   brand:'Xiaomi',  ico:'⚡', name:'POCO X5 / M6 Pro',
+   s:[138,135,122,110,102,160],
+   tip:'Dimensity 1080 + display fluido. Sensi 138 geral dá controle total no clutch.'},
+  {id:'r13',   brand:'Xiaomi',  ico:'⚡', name:'Redmi 13 / 12',
+   s:[118,116,107,100,100,140],
+   tip:'Helio G91 + IPS 90Hz. Não force acima de 120 no geral.'},
+  {id:'mg84',  brand:'Motorola',ico:'🔵', name:'Moto G84 / G54',
+   s:[128,125,114,104,100,150],
+   tip:'OLED 120Hz no G84. Ótima tela. Sensi 128 geral dá equilíbrio perfeito.'},
+  {id:'mg34',  brand:'Motorola',ico:'🔵', name:'Moto G34 / G24',
+   s:[112,110,102,100,100,132],
+   tip:'60-90Hz. Sensi baixa-moderada. Não ultrapasse 120 ou perde controle.'},
+  {id:'rog78', brand:'ASUS',    ico:'🎮', name:'ROG Phone 7 / 8',
+   s:[165,160,145,128,118,185],
+   tip:'240Hz! Use AirTriggers. Sensi altíssima funciona perfeitamente nesse gamer phone.'},
+  {id:'op78',  brand:'OPPO',    ico:'🟢', name:'OPPO A78 / A58',
+   s:[120,118,108,100,100,142],
+   tip:'Helio G99 + 90Hz estável. Sensi moderada garante consistência no ranked.'},
+  {id:'rc53',  brand:'Realme',  ico:'🟡', name:'Realme C53 / C55',
+   s:[115,113,104,100,100,136],
+   tip:'Helio G88 + 90Hz. Sensi 115 é o ponto ideal. Evite 4x com sensi alta.'},
+  {id:'rc65',  brand:'Realme',  ico:'🟡', name:'Realme C65 / GT 6',
+   s:[132,130,118,107,100,155],
+   tip:'GT 6 tem Snapdragon 8s Gen 3. Sensi mais alta funciona muito bem.'},
+];
+
+var labels = ['Geral','Mira (vermelho)','2x Scope','4x Scope','Sniper / 8x','Mov. de Tela'];
+
+var tips = [
+  {i:'🎯',t:'Campo de treino',p:'Troque a sensi e treine 10 min no campo. Nunca vá direto ao ranked.'},
+  {i:'📐',t:'Ajuste de 5 em 5',p:'Suba ou desça a sensi de 5 em 5 pontos até achar o ponto perfeito para você.'},
+  {i:'🖐️',t:'Grip importa',p:'2 dedos: sensi mais alta. 3-4 dedos: reduza um pouco. Adapte ao seu estilo.'},
+  {i:'⚡',t:'Giroscópio OFF',p:'Se você se mexe muito ou joga deitado, desative o giroscópio. Ele atrapalha.'},
+  {i:'🌡️',t:'Celular frio',p:'Celular quente responde menos ao toque. Nunca jogue com o carregador plugado.'},
+  {i:'💾',t:'Salve suas configs',p:'Tire print da sensi que funcionar. Atualizações do jogo podem resetar tudo.'},
+];
+
+var sel = null;
+var brand = 'Todos';
+var query = '';
+
+// brands
+var allBrands = ['Todos'];
+devs.forEach(function(d){ if(allBrands.indexOf(d.brand)===-1) allBrands.push(d.brand); });
+var brandsEl = document.getElementById('brands');
+allBrands.forEach(function(b){
+  var btn = document.createElement('button');
+  btn.className = 'br' + (b==='Todos'?' on':'');
+  btn.textContent = b;
+  btn.addEventListener('click', function(){
+    brand = b;
+    document.querySelectorAll('.br').forEach(function(x){x.classList.remove('on');});
+    btn.classList.add('on');
+    renderList();
+  });
+  brandsEl.appendChild(btn);
+});
+
+// search
+document.getElementById('q').addEventListener('input', function(e){
+  query = e.target.value.toLowerCase();
+  renderList();
+});
+
+function renderList(){
+  var el = document.getElementById('dlist');
+  el.innerHTML = '';
+  var filtered = devs.filter(function(d){
+    var mb = brand==='Todos' || d.brand===brand;
+    var mq = d.name.toLowerCase().indexOf(query)!==-1 || d.brand.toLowerCase().indexOf(query)!==-1;
+    return mb && mq;
+  });
+  if(!filtered.length){
+    el.innerHTML = '<div class="nores">Nenhum resultado encontrado</div>';
+    return;
+  }
+  filtered.forEach(function(d){
+    var div = document.createElement('div');
+    div.className = 'di' + (sel && sel.id===d.id ? ' on' : '');
+    div.innerHTML =
+      '<span class="di-ico">'+d.ico+'</span>'+
+      '<div class="di-info">'+
+        '<div class="di-brand">'+d.brand+'</div>'+
+        '<div class="di-name">'+d.name+'</div>'+
+      '</div>'+
+      '<div class="di-tick">&#10003;</div>';
+    div.addEventListener('click', function(){
+      sel = d;
+      renderList();
+      renderPanel(d);
+    });
+    el.appendChild(div);
+  });
+}
+
+function clamp(v,mn,mx){ return Math.min(mx,Math.max(mn,v)); }
+
+function renderPanel(d){
+  var cards = labels.map(function(lbl,i){
+    var v = d.s[i];
+    var pct = Math.round((v/200)*100);
+    return '<div class="sc">'+
+      '<span class="sc-lbl">'+lbl+'</span>'+
+      '<span class="sc-val">'+v+'</span>'+
+      '<div class="sbar-bg"><div class="sbar" id="sb'+i+'_'+d.id+'"></div></div>'+
+    '</div>';
+  }).join('');
+
+  var g=d.s[0],m=d.s[1],s4=d.s[3],sn=d.s[4];
+  var rows = [
+    ['<span class="mtag r">&#127942; Ranked</span>', clamp(g-12,100,200), clamp(m-10,100,200), clamp(s4-10,100,200), clamp(sn-8,100,200), 'Precisão acima de tudo'],
+    ['<span class="mtag c">&#9876; Clash Squad</span>', clamp(g+8,100,200), clamp(m+8,100,200), clamp(s4+6,100,200), clamp(sn+5,100,200), 'Reação rápida, agressivo'],
+    ['<span class="mtag b">&#128165; Battle Royale</span>', g, m, s4, sn, 'Equilíbrio total'],
+  ].map(function(r){
+    return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td>'+
+      '<td style="font-size:.68rem;color:rgba(200,240,255,.3)">'+r[5]+'</td></tr>';
+  }).join('');
+
+  var panel = document.getElementById('panel');
+  panel.innerHTML =
+    '<div class="ph">'+
+      '<div>'+
+        '<div class="ph-title">'+d.ico+' '+d.name+'</div>'+
+        '<div class="ph-sub">'+d.brand+' &bull; Free Fire 2025</div>'+
+      '</div>'+
+      '<span class="ph-badge">&#10003; APROVADO</span>'+
+    '</div>'+
+    '<div class="sgrid">'+cards+'</div>'+
+    '<div class="tipbox"><span>&#128161;</span><span>'+d.tip+'</span></div>'+
+    '<button class="cbtn" id="cb">&#128203; COPIAR CONFIGURAÇÃO</button>'+
+    '<span class="mlabel">Ajuste por modo de jogo</span>'+
+    '<table class="mt"><thead><tr>'+
+      '<th>Modo</th><th>Geral</th><th>Mira</th><th>4x</th><th>Sniper</th><th>Observação</th>'+
+    '</tr></thead><tbody>'+rows+'</tbody></table>';
+
+  // animate bars after render
+  setTimeout(function(){
+    labels.forEach(function(_,i){
+      var bar = document.getElementById('sb'+i+'_'+d.id);
+      if(bar){
+        var pct = Math.round((d.s[i]/200)*100);
+        bar.style.width = pct+'%';
+      }
+    });
+  }, 80);
+
+  document.getElementById('cb').addEventListener('click', function(){ copyFn(d); });
+}
+
+function copyFn(d){
+  var txt =
+    '📱 '+d.name+' — Ygorxz Sensi\n'+
+    '━━━━━━━━━━━━━━━━━━\n'+
+    '🔹 Geral: '+d.s[0]+'\n'+
+    '🎯 Mira (vermelho): '+d.s[1]+'\n'+
+    '🔭 2x Scope: '+d.s[2]+'\n'+
+    '🔭 4x Scope: '+d.s[3]+'\n'+
+    '🎯 Sniper / 8x: '+d.s[4]+'\n'+
+    '📲 Movimento de Tela: '+d.s[5]+'\n'+
+    '━━━━━━━━━━━━━━━━━━\n'+
+    '💡 '+d.tip+'\n'+
+    '📲 Ygorxz Sensi • Free Fire 2025';
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(txt).catch(function(){});
+  }
+  var t = document.getElementById('toast');
+  t.classList.add('on');
+  setTimeout(function(){ t.classList.remove('on'); }, 2500);
+}
+
+// tips
+var tg = document.getElementById('tgrid');
+tips.forEach(function(t){
+  var div = document.createElement('div');
+  div.className = 'tc';
+  div.innerHTML = '<span class="tc-i">'+t.i+'</span><div class="tc-t">'+t.t+'</div><p class="tc-p">'+t.p+'</p>';
+  tg.appendChild(div);
+});
+
+renderList();
+</script>
+</body>
+</html>
